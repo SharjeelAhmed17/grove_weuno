@@ -1,0 +1,100 @@
+  
+  
+  @layer components {
+  .icons {
+    @apply text-[18px] cursor-pointer opacity-60 transition-all duration-300;
+  }
+
+  .icons:hover {
+    @apply opacity-100 text-white;
+  }
+
+  .hover-transition {
+    @apply duration-300;
+  }
+
+  .themeButton {
+    @apply bg-gold-grad rounded-[14px] px-[34px] py-[14px] text-white transition-all duration-300;
+    /* background-image: var(--gold-grad); */
+    background-size: 100% 100%;
+  }
+
+  .themeButton:hover {
+    background-size: 100% 300%;
+  }
+  
+  .attractionsslider {
+    @apply  overflow-visible;
+  }
+
+  .attractionsslider .swiper-slide {
+    @apply transition-all duration-500 ease-in-out;
+    will-change: transform, opacity;
+  }
+
+  .attractionsslider .swiper-slide:not(.swiper-slide-active) {
+    transform: scale(0.85);
+    opacity: 0.8;
+  }
+
+  .attractionsslider .swiper-slide-next {
+    transform: scale(0.78) translateY(0) !important;
+  }
+
+  .attractionsslider .swiper-slide-active {
+    transform: scale(1) translateY(0) !important;
+    opacity: 1;
+    z-index: 10;
+  }
+
+  .experiencesslider {
+    @apply  overflow-visible;
+  }
+
+  .experiencesslider .swiper-slide {
+    @apply transition-all duration-500 ease-in-out;
+    will-change: transform, opacity;
+  }
+
+  .experiencesslider .swiper-slide:not(.swiper-slide-active) {
+    transform: scale(0.8);
+    opacity: 0.8;
+    z-index: 10;
+  }
+  .experiencesslider .swiper-slide-active {
+    transform: scale(0.8) translateY(0) !important;
+    opacity: 0.8;
+    z-index: 10;
+  }
+  .experiencesslider .swiper-slide-next {
+    transform: scale(1) translateY(0) !important;
+    opacity: 1 !important;
+    z-index: 20;
+  }
+
+}
+.custom-pagination-container {
+  width: fit-content !important;
+}
+
+.custom-pagination-container .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  opacity: 0.6;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.custom-pagination-container .swiper-pagination-bullet-active {
+  background-color: #ffff;
+  width: 11px;
+  height: 11px;
+  opacity: 0.9;
+}
+
+.noScroll {
+  overflow: hidden !important;
+}

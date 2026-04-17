@@ -1,15 +1,18 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "./custom.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-inter: var(--font-inter), ui-sans-serif ;
+  --font-playfair: var(--font-playfair), ui-serif;
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  /* --font-heading: var(--font-sans); */
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -39,6 +42,23 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
+   /* theme colors*/
+  --color-theme-primary: #DCBB75;
+  --color-theme-secondary: #AD8749;
+  --color-theme-light: #c3c1c1;
+
+  /* primary colors */
+  --color-primary-green : #283606;
+
+  /* secondary colors */
+  --color-secondary-green : #ffffff0f;
+
+
+  /* button theme */
+  --background-image-gold-grad: linear-gradient(0deg, #dcbb75, #ad8749);
+
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -83,7 +103,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-.dark {
+/* .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -115,16 +135,67 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-}
+} */
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground font-inter;
+  }
+
+  p {
+    @apply font-inter font-light text-[15px] text-white
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair font-medium [font-optical-sizing:auto] text-white
+  }
+  h1 {
+    @apply text-[68px]
+  }
+  h2 {
+    @apply text-[50px]
+  }
+  h4 {
+    @apply text-[40px]
+  }
+  h3{
+    @apply text-[30px]
   }
   html {
-    @apply font-sans;
+    @apply font-inter;
   }
 }
+
+@layer components {
+  .custom-container {
+    @apply w-full max-w-[1240px] mx-auto px-5 md:px-20;
+  }
+  .custom-container-left {
+  @apply w-full max-w-[1240px] mx-auto px-5 md:px-0 md:mx-0 md:ml-auto 2xl:mx-auto md:pl-20 xl:pl-15 2xl:pl-20;
+}
+ 
+}
+
+body {
+  animation: animateBg 14s ease infinite;
+  background-color: #0F1500;
+  background-image: linear-gradient(97deg, #283606, #0F1500);
+  background-size: 140% 100%;
+}
+@keyframes animateBg {
+  0% {
+      background-position: 0 50%
+  }
+
+  50% {
+      background-position: 100% 50%
+  }
+
+  to {
+      background-position: 0 50%
+  }
+}
+
+

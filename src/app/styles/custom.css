@@ -97,4 +97,6 @@
 
 .noScroll {
   overflow: hidden !important;
+  height: 100% !important;
+  position: relative;
 }

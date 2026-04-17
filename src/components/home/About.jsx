@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { VideoPoster } from "@/asstes";
 import Image from "next/image";
 import { FaArrowRight, FaPlay } from "react-icons/fa6";
+import VideoModal from "./VideoMobal";
 
 const About = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +29,7 @@ const About = () => {
             height={540}
             alt="About Image"
             className="w-full h-auto"
+            priority= {true}
           />
           <button
             className="bg-white px-4 rounded-full absolute flex justify-center items-center cursor-pointer top-0 bottom-0 my-auto mx-auto h-20 aspect-square hover:bg-primary-green group"
@@ -36,30 +38,12 @@ const About = () => {
             <FaPlay className="text-primary-green text-2xl md:text-4xl group-hover:text-white" />
           </button>
           {isModalOpen && (
-            <div
-              className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-              onClick={() => setIsModalOpen(false)}
-            >
-              <div
-                className="bg-white  rounded-lg max-w-2xl w-full relative  "
-                onClick={(e) => e.stopPropagation()}
-              >
-                <video
-                  width="100"
-                  height="240"
-                  controls
-                  className="w-full h-auto rounded-lg"
-                >
-                  <source src="" type="video/mp4" />
-                </video>
-                <button
-                  className=" text-black rounded-md absolute top-0 right-0"
-                  onClick={() => setIsModalOpen(false)}
-                >
-                  X
-                </button>
-              </div>
-            </div>
+            <VideoModal
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+             videoId={"0nSaYShx92Y"}
+             key={"0nSaYShx92Y"}
+            />
           )}
         </div>
 

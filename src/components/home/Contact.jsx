@@ -14,7 +14,8 @@ const Contact = () => {
             alt="Map"
             width={600}
             height={600}
-            className="w-full h-auto order-2 md:order-1 "
+            className="w-full h-auto order-2 md:order-1"
+            priority= {true}
           />
           <div className="content-area md:order-2 order-1">
             <div className="content-area flex flex-col gap-4 md:gap-6 lg:w-[80%] ">

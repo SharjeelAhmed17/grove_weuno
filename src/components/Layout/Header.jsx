@@ -7,10 +7,7 @@ import { FaTiktok } from "react-icons/fa6";
 import { RiInstagramFill } from "react-icons/ri";
 import { BsTwitterX } from "react-icons/bs";
 import { FaSnapchatGhost } from "react-icons/fa";
-import { FiMenu } from "react-icons/fi";
-import { IoClose } from "react-icons/io5";
 import ReactFlagsSelect from "react-flags-select";
-import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MobileMenu = ({
@@ -38,39 +35,40 @@ const MobileMenu = ({
                 alt="logo"
                 width={500}
                 height={500}
+                priority={true}
                 className="max-w-[200px] w-full"
               />
             </Link>
             <button
-  className="flex flex-col gap-1.5 p-2 group"
-  onClick={() => setIsMenuOpen(false)}
-  aria-label="Toggle menu"
->
-  {/* TOP LINE */}
-  <span
-    className={`block w-6 h-0.5 bg-theme-primary transition-all duration-300 ease-in-out ${
-      isMenuOpen 
-        ? "rotate-45 translate-y-[8px]" // Moves down to center then rotates
-        : "rotate-0"
-    }`}
-  />
-  
-  {/* MIDDLE LINE */}
-  <span
-    className={`block w-6 h-0.5 bg-theme-primary transition-all duration-300 ${
-      isMenuOpen ? "opacity-0 translate-x-2" : "opacity-100"
-    }`}
-  />
-  
-  {/* BOTTOM LINE */}
-  <span
-    className={`block w-6 h-0.5 bg-theme-primary transition-all duration-300 ease-in-out ${
-      isMenuOpen 
-        ? "-rotate-45 translate-y-[-8px]" // Moves up to center then rotates
-        : "rotate-0"
-    }`}
-  />
-</button>
+              className="flex flex-col gap-1.5 p-2 group"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Toggle menu"
+            >
+              {/* TOP LINE */}
+              <span
+                className={`block w-6 h-0.5 bg-theme-primary transition-all duration-300 ease-in-out ${
+                  isMenuOpen
+                    ? "rotate-45 translate-y-[8px]" // Moves down to center then rotates
+                    : "rotate-0"
+                }`}
+              />
+
+              {/* MIDDLE LINE */}
+              <span
+                className={`block w-6 h-0.5 bg-theme-primary transition-all duration-300 ${
+                  isMenuOpen ? "opacity-0 translate-x-2" : "opacity-100"
+                }`}
+              />
+
+              {/* BOTTOM LINE */}
+              <span
+                className={`block w-6 h-0.5 bg-theme-primary transition-all duration-300 ease-in-out ${
+                  isMenuOpen
+                    ? "-rotate-45 translate-y-[-8px]" // Moves up to center then rotates
+                    : "rotate-0"
+                }`}
+              />
+            </button>
           </div>
 
           <div className="flex flex-col gap-8">
@@ -109,9 +107,9 @@ const MobileMenu = ({
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selected, setSelected] = useState("US");
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(true);
   const [mounted, setMounted] = useState(false);
-  console.log(mounted, "mounted");
+
   useEffect(() => {
     setMounted(true);
     return () => setMounted(false);
@@ -131,17 +129,19 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 1024 && isMenuOpen) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    if( typeof window !== undefined){
+      const handleResize = () => {
+        if (window.innerWidth > 1024 && isMenuOpen) {
+          setIsMenuOpen(false);
+        }
+      };
+  
+      window.addEventListener("resize", handleResize);
+  
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, [isMenuOpen]);
 
   useEffect(() => {
@@ -157,15 +157,21 @@ const Header = () => {
   }, [isMenuOpen]);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    if(typeof window !== undefined){
+      const handleScroll = () => {
+        const currentScroll = window.scrollY || document.documentElement.scrollTop;
+        setIsScrolled(currentScroll > 50);
+      }
+      handleScroll();
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
   }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ease-in-out ${
-        isScrolled ? " backdrop-blur-md bg-black/20" : " bg-transparent"
+        isScrolled ? " backdrop-blur-lg bg-black/50" : " bg-transparent"
       }`}
     >
       <div className="wrapper relative  ">
@@ -177,6 +183,7 @@ const Header = () => {
                 alt="logo"
                 width={500}
                 height={500}
+                priority={true}
                 className="max-w-[200px] w-full"
               />
             </Link>
@@ -209,13 +216,10 @@ const Header = () => {
                 <button
                   onClick={handleMenuToggle}
                   className="text-white focus:outline-none"
+                  aria-label="Toggle menu"
                 >
                   {/* menu */}
-                  <button
-                    className="flex flex-col gap-1.5 p-2 "
-                    onClick={() => handleMenuToggle()}
-                    aria-label="Toggle menu"
-                  >
+                  <div className="flex flex-col gap-1.5 p-2 ">
                     <span
                       className={`block w-6 h-0.5 bg-theme-primary transition-all duration-300 ${
                         isMenuOpen
@@ -235,7 +239,7 @@ const Header = () => {
                           : ""
                       }`}
                     />
-                  </button>
+                  </div>
                 </button>
               </div>
             </div>

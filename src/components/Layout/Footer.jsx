@@ -24,6 +24,7 @@ const Footer = () => {
             alt="logo"
             width={500}
             height={500}
+            priority={true}
             className="max-w-[250px] w-full block lg:hidden"
           />
           
@@ -40,6 +41,7 @@ const Footer = () => {
                 width={150}
                 height={50}
                 className="w-[140px] h-auto"
+                priority= {true}
               />
               <Image
                 src={GoogleStore}
@@ -47,6 +49,7 @@ const Footer = () => {
                 width={150}
                 height={50}
                 className="w-[140px] h-auto"
+                priority= {true}
               />
             </div>
           </div>
@@ -101,6 +104,7 @@ const Footer = () => {
             alt="logo"
             width={500}
             height={500}
+            priority={true}
             className="max-w-[250px] w-full hidden lg:block"
           />
           <div className="social-media flex flex-row gap-4 lg:items-center">
@@ -124,9 +128,9 @@ const Footer = () => {
             </Link>
           </div>
           <div className="social-media flex flex-row gap-4 lg:items-center   justify-start lg:justify-end">
-            <Image src={payment3} alt="payment" width={26} height={26} />
-            <Image src={payment2} alt="payment" width={26} height={26} />
-            <Image src={payment1} alt="payment" width={26} height={26} />
+            <Image src={payment3} alt="payment" width={28} height={28} className="w-7 aspect-square" priority= {true} />
+            <Image src={payment2} alt="payment" width={26} height={26} className="w-7 aspect-square" priority= {true} />
+            <Image src={payment1} alt="payment" width={26} height={26} className="w-7 aspect-square" priority= {true}/>
           </div>
         </div>
       </div>

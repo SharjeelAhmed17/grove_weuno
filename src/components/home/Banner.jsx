@@ -11,7 +11,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  console.log(activeIndex);
 
   const homeBannerSlide = [
     {
@@ -133,7 +132,6 @@ const Banner = () => {
 
         <Swiper
           pagination={{
-            // dynamicBullets: false,
             clickable: true,
             el: ".custom-pagination-container",
           }}
@@ -157,11 +155,6 @@ const Banner = () => {
                 backgroundPosition: "center",
               }}
             >
-              {/* <div className="custom-container h-full">
-                <div className="grid grid-cols-1 lg:grid-cols-2 items-center h-full">
-                  
-                </div>
-              </div> */}
             </SwiperSlide>
           ))}
         </Swiper>

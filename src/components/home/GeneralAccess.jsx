@@ -61,6 +61,7 @@ const GeneralAccess = () => {
           pagination={{
             clickable: true,
           }}
+          loop={true}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
@@ -91,6 +92,7 @@ const GeneralAccess = () => {
                   width={200}
                   alt="General Access"
                   className=" h-[480px] w-[342px] rounded-3xl object-cover object-center"
+                  priority={true}
                 />
                 <h2 className="text-2xl md:text-3xl text-center">
                   {item.name}

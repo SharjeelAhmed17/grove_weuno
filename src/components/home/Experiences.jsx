@@ -61,6 +61,7 @@ const Experiences = () => {
               pagination={{
                 clickable: true,
               }}
+              loop={true}
               autoplay={{
                 delay: 3000,
                 disableOnInteraction: false,
@@ -92,6 +93,7 @@ const Experiences = () => {
                       width={200}
                       alt="General Access"
                       className="w-[342px] h-[480px] rounded-3xl  object-cover object-center"
+                      priority= {true}
                     />
                     <h2 className="text-2xl md:text-3xl ">{item.name}</h2>
                   </div>

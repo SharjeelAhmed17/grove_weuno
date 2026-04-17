@@ -53,6 +53,7 @@ const ResturantGrid = () => {
                   width={200}
                   height={200}
                   className="w-full h-auto"
+                  priority={true}
                 />
                 <div className="px-0 md:px-4 my-4 flex flex-row justify-between items-center">
                   <div className="flex flex-col gap-4">

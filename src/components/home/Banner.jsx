@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { BannerBG } from "@/asstes";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -149,12 +150,21 @@ const Banner = () => {
           {homeBannerSlide?.map((slide, index) => (
             <SwiperSlide
               className="relative h-full"
-              style={{
-                backgroundImage: `url(${slide.imageSrc.src})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
+              // style={{
+              //   backgroundImage: `url(${slide.imageSrc.src})`,
+              //   backgroundSize: "cover",
+              //   backgroundPosition: "center",
+              // }}
             >
+              <Image
+        src={slide.imageSrc}
+        alt={`Banner ${index}`}
+        fill
+        className="object-cover"
+        priority={index === 0} 
+        loading={index === 0 ? "eager" : "lazy"}
+        sizes="100vw"
+      />
             </SwiperSlide>
           ))}
         </Swiper>
